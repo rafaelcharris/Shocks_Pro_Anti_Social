@@ -76,12 +76,15 @@ class app_2_trust_beliefs(Page):
             sender_belief_if2_option = Constants.send_choices[2],
         )
 
-class all_wait(WaitPage):
 
+class all_wait(WaitPage):
+    #wait_for_all_groups = True
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
 
-    wait_for_all_groups = True
+    def after_all_players_arrive(self):
+        self.group.set_payoff_belief()
+
 
 class app_2_trust_main_results(Page):
 
@@ -89,8 +92,8 @@ class app_2_trust_main_results(Page):
          return self.round_number == Constants.num_rounds
 
     def vars_for_template(self):
+        #self.group.set_payoff_belief()
         self.group.trust_final_payoff()
-        #self.group.set_payoff_belief() #this is the code that executes the shuffle in group class
 
 
 page_sequence = [
