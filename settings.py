@@ -13,12 +13,13 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'session_config_1',
-        'display_name': 'session_config_1',
-        'num_demo_participants': 2,
-        #'app_sequence': ['app_2_trust', 'app_9_report'],
-        'app_sequence': ['app_0_consent', 'app_1_addition', 'app_2_trust', 'app_9_report'],
-        'use_browser_bots': True,
+        'name': 'Type_A',
+        'display_name': 'Type_A',
+        'num_demo_participants': 4,
+        #'app_sequence': ['app_1_addition'],
+        'app_sequence': ['app_0_consent', 'app_1_addition', 'app_2_trust', 'app_3_summary', 'Demographics', 'app_9_report'],
+        'use_browser_bots': False,
+        'time_limit': 60*4,
     },
 ]
 
@@ -29,10 +30,14 @@ LANGUAGE_CODE = 'es'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+USE_POINTS = False
 
-ROOMS = []
-
+ROOMS = [
+    {
+        'name': 'Estudio',
+        'display_name': 'Estudio',
+    }
+]
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
